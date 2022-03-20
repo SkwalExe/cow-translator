@@ -8,6 +8,16 @@ Official moo translator to communicate with cows 🐮
 
 # Installation 📦
 
+## Arch
+
+Cow translator is available in the AUR
+
+```bash
+yay -S cow-translator
+```
+
+## Other distros
+
 **Clone this repo**
 
 ```bash
