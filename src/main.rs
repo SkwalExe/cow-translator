@@ -224,7 +224,7 @@ fn main() {
                 input_as_moos.push_str(&format!("{} ", c_as_moo));
             }
 
-            println!("\n{} => {}", MAGENTA, input_as_moos);
+            println!("\n{}{}", MAGENTA, input_as_moos);
         }
         "to_text" => {
             let moos_vec = input.split_whitespace().collect::<Vec<&str>>();
@@ -247,7 +247,7 @@ fn main() {
                 input_as_text.push(*moo_as_char);
             }
 
-            println!("\n{} => {}", MAGENTA, input_as_text);
+            println!("\n{}{}", MAGENTA, input_as_text);
         }
         _ => {}
     }
