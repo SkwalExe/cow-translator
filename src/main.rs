@@ -128,6 +128,16 @@ fn main() {
             "--" => {
                 args.remove(0);
                 input = args.join(" ").to_string(); // everything after the "--" is the input and isn't parsed
+
+                if input.is_empty() {
+                    // error if the input is empty
+                    eprintln!(
+                        "{}Error : the input is empty\nPlease specify the input after the '--'{}",
+                        RED, RESET
+                    );
+                    process::exit(1);
+                }
+
                 break; // stop parsing arguments
             }
 
