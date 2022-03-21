@@ -245,6 +245,14 @@ fn main() {
             let mut input_as_text = String::new(); // the input converted to text, each moo is converted to a character
 
             for moo in moos_vec {
+                // if moo to lowercase doens't correspond to the original moo, print error and exit, invalid moo
+                if moo.to_lowercase() != MOO {
+                    println!(
+                        "{}[ x ] : Invalid moo : {}{} {} {}",
+                        RED, WHITE, BG_RED, moo, RESET
+                    );
+                    process::exit(1);
+                }
                 let moo_as_binary = convert_string_to_binary_string(&moo.to_string()); // the moo converted to a binary string | mooOoOo => 0001010
                 let moo_as_decimal = binary_string_to_decimal(&moo_as_binary); // the moo as a decimal number | 0001010 => 10
                 let moo_as_char = match chars.get(moo_as_decimal as usize) {
