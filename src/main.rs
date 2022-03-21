@@ -190,7 +190,7 @@ fn main() {
 
             _ => {
                 // if the parameter is not recognized, print error and exit
-                println!(
+                eprintln!(
                     "{}Invalid argument: {}{} {} {}",
                     RED, BG_RED, WHITE, args[0], RESET
                 );
