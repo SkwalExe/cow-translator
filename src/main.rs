@@ -201,6 +201,14 @@ fn main() {
 
     match command {
         "to_cow" => {
+            if input.is_empty() {
+                // error if the input is empty
+                eprintln!(
+                    "{}Error : the input is empty\nPlease specify the input after the '--'{}",
+                    RED, RESET
+                );
+                process::exit(1);
+            }
             // convert text to cow language
             let mut input_as_numbers = String::new(); // the input converted to numbers, each character is converted to a 2-digit number that represents its index in the chars vector
 
@@ -239,6 +247,14 @@ fn main() {
             println!("\n{}{}", MAGENTA, input_as_moos); // print the result, the input converted to moos
         }
         "to_text" => {
+            if input.is_empty() {
+                // error if the input is empty
+                eprintln!(
+                    "{}Error : the input is empty\nPlease specify the input after the '--'{}",
+                    RED, RESET
+                );
+                process::exit(1);
+            }
             // convert cow language to text
             let moos_vec = input.split_whitespace().collect::<Vec<&str>>(); // the vector containing all the MOOs of the input
 
