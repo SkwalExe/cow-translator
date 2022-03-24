@@ -18,6 +18,17 @@ yay -S cow-translator
 
 ## Other distros
 
+## With make
+
+Run make
+
+```bash
+# 📂 cow-translator/
+make
+```
+
+## Or
+
 **Clone this repo**
 
 ```bash
@@ -54,6 +65,16 @@ $ cow-translator -- Hello
 
 # Uninstall 🗑
 
+## With make
+
+Run make uninstall
+
+```bash
+# 📂 cow-translator/
+make uninstall
+```
+
+## Or
 Just remove the binary
 
 ```bash
