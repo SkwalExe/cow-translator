@@ -63,6 +63,37 @@ $ cow-translator -- Hello
  => mOoOoOO moooOoo mooOoOO mooOoOO mooOOOo mOOOOOo mOOOoOo mooOOOo moOoooO mooOoOO mooooOO
 ```
 
+# Troubleshooting 🔧
+
+**Error:**
+
+```
+/app/target/release/cow-translator: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.33' not found (required by /app/target/release/cow-translator)
+```
+
+**Solution:**
+
+Compile with 
+
+```bash
+RUSTFLAGS='--cfg procmacro2_semver_exempt' cargo build  --release
+```
+
+# Docker 🐳
+
+### Build 🛠️
+
+```bash
+# 📂 cow-translator/
+docker build -t cow-translator .
+```
+
+### Run 🏃
+
+```bash
+docker run --rm -it cow-translator [OPTIONS]
+```
+
 # Uninstall 🗑
 
 ## With make
