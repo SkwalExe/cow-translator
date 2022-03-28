@@ -8,7 +8,7 @@ Official moo translator to communicate with cows 🐮
 
 # Installation 📦
 
-## Arch
+## Arch Linux 🐧
 
 Cow translator is available in the AUR
 
@@ -16,9 +16,9 @@ Cow translator is available in the AUR
 yay -S cow-translator
 ```
 
-## Other distros
+## Other 🪟🐧
 
-## With make
+## With make - Linux 🐧
 
 Run make
 
@@ -27,7 +27,7 @@ Run make
 make
 ```
 
-## Or
+## Build from source - Linux 🐧 & Windows 🪟
 
 **Clone this repo**
 
@@ -42,7 +42,7 @@ build with [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.
 cargo build --release
 ```
 
-Move the binary
+**[ LINUX ONLY ] :** Move the binary
 
 ```bash
 # 📂 cow-translator/
