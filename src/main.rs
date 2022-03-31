@@ -102,6 +102,7 @@ fn add_to_string_like_binary(input: String, to_add: i32) -> String {
 fn main() {
     let mut command = "to_cow"; // the command to execute : to_cow, to_text, help, version
     let mut input = String::from(""); // the input string to convert
+    let mut color = true;
 
     let chars = vec![
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
@@ -123,6 +124,10 @@ fn main() {
 
             "-t" | "--to-text" => {
                 command = "to_text"; // set the command to : convert cow language to text
+                args.remove(0);
+            }
+            "-nc" | "--no-color" => {
+                color = false;
                 args.remove(0);
             }
             "--" => {
@@ -174,6 +179,10 @@ fn main() {
                 );
                 println!(
                     "\t{}--to-text, -t: {}Converts cow to text{}",
+                    MAGENTA, YELLOW, RESET
+                );
+                println!(
+                    "\t{}--no-color, -nc: {}Dont color the output{}",
                     MAGENTA, YELLOW, RESET
                 );
                 println!(
@@ -244,7 +253,8 @@ fn main() {
                 input_as_moos.push_str(&format!("{} ", c_as_moo)); // add the moo to the input_as_moos string
             }
 
-            println!("\n{}{}", MAGENTA, input_as_moos); // print the result, the input converted to moos
+            println!("\n{}{}", if color { MAGENTA } else { "" }, input_as_moos);
+            // print the result, the input converted to moos
         }
         "to_text" => {
             if input.is_empty() {
@@ -287,7 +297,8 @@ fn main() {
                 input_as_text.push(*moo_as_char); // add the character to the input_as_text string
             }
 
-            println!("\n{}{}", MAGENTA, input_as_text); // print the result, the moos converted to text
+            println!("\n{}{}", if color { MAGENTA } else { "" }, input_as_text);
+            // print the result, the moos converted to text
         }
         _ => {}
     }
