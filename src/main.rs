@@ -162,6 +162,13 @@ fn main() {
                 process::exit(0);
             }
 
+
+            "--version-check" => {
+                // allow other programs to check if the version is up to date
+                print!("{}", env!("CARGO_PKG_VERSION"));
+                process::exit(0);
+            }
+
             "-h" | "--help" => {
                 // print help and exit
                 println!("{}{} cow-translator {}", WHITE, BG_MAGENTA, RESET);
@@ -190,6 +197,11 @@ fn main() {
                     "\t{}--no-color, -nc: {}Dont color the output{}",
                     MAGENTA, YELLOW, RESET
                 );
+                println!(
+                    "\t{}--ignore-wrong-characters, -i: {}Ignore wrong characters{}",
+                    MAGENTA, YELLOW, RESET
+                );
+                println!("\t{}--version-check: {}Prints the version of the program{}", MAGENTA, YELLOW, RESET);
                 println!(
                     "\t{}-- [text] : {}Specify the text to convert{}",
                     MAGENTA, YELLOW, RESET
