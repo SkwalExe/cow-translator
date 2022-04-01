@@ -81,6 +81,14 @@ RUSTFLAGS='--cfg procmacro2_semver_exempt' cargo build  --release
 
 # Docker 🐳
 
+## Run the latest version
+
+```bash
+docker run --rm -it ghcr.io/skwalexe/cow-translator:main
+```
+
+## Test your changes 🚧
+
 ### Build 🛠️
 
 ```bash
