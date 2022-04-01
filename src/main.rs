@@ -103,6 +103,7 @@ fn main() {
     let mut command = "to_cow"; // the command to execute : to_cow, to_text, help, version
     let mut input = String::from(""); // the input string to convert
     let mut color = true;
+    let mut ignore_wrong_characters = false;
 
     let chars = vec![
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
@@ -128,6 +129,10 @@ fn main() {
             }
             "-nc" | "--no-color" => {
                 color = false;
+                args.remove(0);
+            }
+            "-i" | "--ignore-wrong-characters" => {
+                ignore_wrong_characters = true;
                 args.remove(0);
             }
             "--" => {
@@ -226,11 +231,15 @@ fn main() {
                     // get the index of the character in the chars vector
                     Some(x) => format!("{}{}", if x >= 10 { "" } else { "0" }, x), // add a 0 if the index is less than 10 to make it a 2-digit number
                     None => {
-                        println!(
-                            "{}[ x ] : Unsupported character : {}{} {} {}",
-                            RED, WHITE, BG_RED, c, RESET
-                        );
-                        process::exit(1);
+                        if ignore_wrong_characters {
+                            continue;
+                        } else {
+                            println!(
+                                "{}[ x ] : Unsupported character : {}{} {} {}",
+                                RED, WHITE, BG_RED, c, RESET
+                            );
+                            process::exit(1)
+                        }
                     }
                 };
                 input_as_numbers.push_str(&format!("{}", c_as_number)); // add the 2-digit number to the input_as_numbers string
@@ -273,11 +282,15 @@ fn main() {
             for moo in moos_vec {
                 // if moo to lowercase doens't correspond to the original moo, print error and exit, invalid moo
                 if moo.to_lowercase() != MOO {
-                    println!(
-                        "{}[ x ] : Invalid moo : {}{} {} {}",
-                        RED, WHITE, BG_RED, moo, RESET
-                    );
-                    process::exit(1);
+                    if ignore_wrong_characters {
+                        continue;
+                    } else {
+                        println!(
+                            "{}[ x ] : Invalid moo : {}{} {} {}",
+                            RED, WHITE, BG_RED, moo, RESET
+                        );
+                        process::exit(1);
+                    }   
                 }
                 let moo_as_binary = convert_string_to_binary_string(&moo.to_string()); // the moo converted to a binary string | mooOoOo => 0001010
                 let moo_as_decimal = binary_string_to_decimal(&moo_as_binary); // the moo as a decimal number | 0001010 => 10
